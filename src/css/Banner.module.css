@@ -1,8 +1,10 @@
+@import "globals.css";
+
 .bannerBase {
   display: flex;
   position: fixed;
   width: 100%;
-  height: 200px;
+  height: var(--bannerHeight);
   background-color: gray;
 }
 
