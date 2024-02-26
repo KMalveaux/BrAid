@@ -22,3 +22,19 @@
   color: aliceblue;
   align-items: center;
 }
+
+#downArrow {
+  display: flex;
+  position: absolute;
+  left: 40%;
+  top: 80%;
+  width: 200px;
+  height: 200px;
+}
+
+.localResources {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10%;
+  padding-right: 10%;
+}
