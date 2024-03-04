@@ -1,13 +1,21 @@
 import { useState } from "react";
 import styles from "../css/DropDown.module.css";
 
-const DropDown = ({ items }: { items: string[] }) => {
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const DropDown: React.FC<Props> = ({ title, items }: Props) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
     <div className={styles.dropDownWrapper}>
-      <button onClick={() => setShowDropdown((prevState) => !prevState)}>
-        Trigger DropDown
+      <button
+        onClick={() => setShowDropdown((prevState) => !prevState)}
+        id={styles.button}
+      >
+        {title}
       </button>
       {showDropdown && (
         <div className={styles.dropDown}>

@@ -13,23 +13,43 @@
   display: flex;
   width: 100%;
   height: 100vh;
-  background-image: url("../images/RadioTower.jpg");
-  background-size: fill;
+  background-image: url("../images/FamilyIntrodutionImage.jpg");
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-
   font-size: 70px;
   color: aliceblue;
-  align-items: center;
+  box-sizing: border-box;
+  padding: 5%;
+  justify-content: space-between;
+}
+
+#introductionPlate {
+  padding: 3%;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  height: 30%;
+  border: 1px solid black;
+  background-color: rgba(22, 21, 21, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 #downArrow {
   display: flex;
   position: absolute;
-  left: 40%;
-  top: 80%;
+  left: 45%;
+  bottom: 0%;
   width: 200px;
   height: 200px;
+}
+
+#confusedButton {
+  padding: 15px;
+  height: 20%;
+  border: 1px solid black;
+  background-color: rgba(29, 59, 34, 0.5);
+  backdrop-filter: blur(8px);
 }
 
 .localResources {

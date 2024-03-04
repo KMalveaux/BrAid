@@ -1,3 +1,4 @@
+// Local Imports
 import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
@@ -10,8 +11,19 @@ const LandingPage = () => {
       <Banner />
       <div className={styles.pageContent}>
         <div className={styles.imageContainer}>
-          <p>Welcome to B+rAid</p>
-          <img id={styles.downArrow} src={downArrow} alt="Down Arrow" />
+          <div id={styles.introductionPlate}>
+            <p>Welcome to B+rAid</p>
+            <p style={{ fontSize: "24px", paddingTop: "10%" }}>
+              A community dedicated to helping the homeless of Baton Rouge
+            </p>
+          </div>
+          <p id={styles.confusedButton}>Confused? Click Here!</p>
+          <img
+            id={styles.downArrow}
+            onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })}
+            src={downArrow}
+            alt="Down Arrow"
+          />
         </div>
         <p>Local Resources</p>
         <div className={styles.localResources}>

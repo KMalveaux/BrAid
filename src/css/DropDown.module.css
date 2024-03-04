@@ -3,13 +3,23 @@
   width: 200px;
 }
 
+#button {
+  height: 100%;
+  width: 100%;
+  font-size: 2rem;
+  background-color: transparent;
+  border: 1px solid black;
+  -webkit-transform: skewX(-10deg);
+  -moz-transform: skewX(-10deg);
+  -ms-transform: skewX(-10deg);
+  transform: skewX(-10deg);
+  -webkit-font-smoothing: antialiased;
+}
+
 .dropDown {
   background: #fff;
   width: 200px;
-  height: 100px;
   position: absolute;
-  top: 50px;
-  left: 0;
   font-family: "Open Sans";
   font-size: 22px;
   display: flex;
