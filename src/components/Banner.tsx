@@ -21,7 +21,11 @@ const Banner = () => {
         />
         <DropDown
           title="Food"
-          items={["Medication", "Injury", "Emergencies"]}
+          items={[
+            "24 Hour Food Banks",
+            "Food assistances programs",
+            "Emergencies",
+          ]}
         />
       </div>
     </div>
