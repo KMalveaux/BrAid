@@ -1,22 +1,37 @@
+// Third Party Imports
+import { useState } from "react";
+
+// Local Imports
 import styles from "../css/Filters.module.css";
 
-const Filters = () => {
+interface Props {
+  title: string;
+  items: string[];
+}
+
+const Filters: React.FC<Props> = ({ title, items }: Props) => {
+  const [showDropdown, setShowDropdown] = useState(false);
+
   return (
-    <div className={styles.filtersContainer}>
-      <h1>Food</h1>
-      <ul>
-        <li>Filter 1</li>
-        <li>Filter 2</li>
-        <li>Filter 3</li>
-        <li>Filter 4</li>
-      </ul>
-      <h1>Health</h1>
-      <ul>
-        <li>Filter 1</li>
-        <li>Filter 2</li>
-        <li>Filter 3</li>
-        <li>Filter 4</li>
-      </ul>
+    <div>
+      <button
+        id={styles.filterDropDown}
+        onClick={() => setShowDropdown((prevState) => !prevState)}
+      >
+        {title}
+      </button>
+      {showDropdown && (
+        <ul>
+          {items.map((item, index) => (
+            <li key={index}>
+              <label>
+                <input type="checkbox" />
+                <span id={styles.listItemm}>{item}</span>
+              </label>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

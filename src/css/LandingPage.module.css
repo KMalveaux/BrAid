@@ -29,10 +29,12 @@
   display: flex;
   position: relative;
   flex-direction: column;
-  height: 30%;
+  align-self: flex-start;
+
   border: 1px solid black;
   background-color: rgba(22, 21, 21, 0.5);
   backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
 }
 
 #downArrow {
@@ -45,11 +47,45 @@
 }
 
 #confusedButton {
+  align-self: flex-end;
   padding: 15px;
-  height: 20%;
   border: 1px solid black;
+  font-size: 20px;
   background-color: rgba(29, 59, 34, 0.5);
   backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  margin: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s; /* Smooth transition */
+}
+#confusedButton:hover {
+  background-color: rgba(
+    0,
+    100,
+    0,
+    0.5
+  ); /* Change to a darker green shade on hover */
+}
+
+#emergencyButton {
+  align-self: flex-end;
+  padding: 15px;
+  border: 1px solid black;
+  font-size: 20px;
+  background-color: rgba(59, 33, 29, 0.5);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+  margin: 2%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  transition: background-color 0.3s;
+}
+
+#emergencyButton:hover {
+  background-color: rgba(100, 0, 0, 0.5);
 }
 
 .localResources {
@@ -57,4 +93,8 @@
   flex-direction: row;
   padding-left: 10%;
   padding-right: 10%;
+}
+
+#filtersContainer {
+  width: 20%;
 }
