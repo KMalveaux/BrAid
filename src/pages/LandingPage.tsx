@@ -2,17 +2,26 @@
 import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
+import Survey from "../components/Survey";
+import { MouseEventHandler, useState } from "react";
 
 const downArrow = require("../images/DownArrow.png");
 
 const LandingPage = () => {
+  const [showSurvey, setShowSurvey] = useState(false);
+
+  const surveyButtonFunc: MouseEventHandler<HTMLParagraphElement> = (event) => {
+    setShowSurvey((prevState) => !prevState);
+  };
+
   return (
     <div className={styles.pageBase}>
       <Banner />
+      {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
       <div className={styles.pageContent}>
         <div className={styles.imageContainer}>
           <div id={styles.introductionPlate}>
-            <p>Welcome to B+rAid</p>
+            <p>Welcome to B+RAid</p>
             <p
               style={{
                 fontSize: "24px",
@@ -27,10 +36,15 @@ const LandingPage = () => {
             style={{
               display: "flex",
               flexDirection: "column",
+              position: "relative",
+              top: "-30%",
+              width: "30%",
               alignSelf: "flex-end",
             }}
           >
-            <p id={styles.confusedButton}>I'm new!</p>
+            <p id={styles.confusedButton} onClick={surveyButtonFunc}>
+              I'm new!
+            </p>
             <p id={styles.emergencyButton}>I have an emergency!</p>
           </div>
           <img
@@ -43,9 +57,9 @@ const LandingPage = () => {
         <p>Local Resources</p>
         <div className={styles.localResources}>
           <div id={styles.filtersContainer}>
-            <Filters title="Health" items={["Mens", "Womens", "Youth"]} />
-            <Filters title="Food" items={["Breakfast", "Lunch", "Dinner"]} />
-            <Filters title="Safety" items={["Police", "Fire", "Medical"]} />
+            <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
+            <Filters title="Food" filters={["Breakfast", "Lunch", "Dinner"]} />
+            <Filters title="Safety" filters={["Police", "Fire", "Medical"]} />
           </div>
 
           <iframe

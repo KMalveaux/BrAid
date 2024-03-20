@@ -6,10 +6,16 @@ import styles from "../css/Filters.module.css";
 
 interface Props {
   title: string;
-  items: string[];
+  filters: string[];
 }
 
-const Filters: React.FC<Props> = ({ title, items }: Props) => {
+/**
+ *
+ * @param title The title of the dropdown
+ * @param filters[]  An array of filters to be displayed as a list in the drop down UI
+ * @returns JSX.Element representing an expandable dropdown menu containing filters
+ */
+const Filters: React.FC<Props> = ({ title, filters }: Props) => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   return (
@@ -22,11 +28,11 @@ const Filters: React.FC<Props> = ({ title, items }: Props) => {
       </button>
       {showDropdown && (
         <ul>
-          {items.map((item, index) => (
+          {filters.map((filter, index) => (
             <li key={index}>
               <label>
                 <input type="checkbox" />
-                <span id={styles.listItemm}>{item}</span>
+                <span id={styles.listItemm}>{filter}</span>
               </label>
             </li>
           ))}

@@ -1,0 +1,36 @@
+.surveyBase {
+  display: flex;
+  box-sizing: border-box;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+  padding: 2%;
+  background-color: rgba(37, 37, 37, 0.8);
+}
+
+.surveyContainer {
+  display: flex;
+  position: relative;
+  width: 90%;
+  height: 100%;
+  background-color: beige;
+  padding: 2%;
+  box-sizing: border-box;
+}
+
+#closeButton {
+  display: flex;
+  position: absolute;
+  align-self: flex-start;
+}
+
+#surveyBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}

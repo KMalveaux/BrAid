@@ -40,52 +40,58 @@
 #downArrow {
   display: flex;
   position: absolute;
+  cursor: pointer;
   left: 45%;
   bottom: 0%;
-  width: 200px;
-  height: 200px;
+  width: 100px;
+  height: 100px;
 }
 
 #confusedButton {
   align-self: flex-end;
   padding: 15px;
   border: 1px solid black;
-  font-size: 20px;
+  font-size: 40%;
   background-color: rgba(29, 59, 34, 0.5);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
   margin: 2%;
   width: 100%;
+  border-radius: 9px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
-  transition: background-color 0.3s; /* Smooth transition */
+  transition: background-color 0.3s;
 }
 #confusedButton:hover {
-  background-color: rgba(
-    0,
-    100,
-    0,
-    0.5
-  ); /* Change to a darker green shade on hover */
+  cursor: pointer;
+  background-color: rgba(0, 100, 0, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 9px 6px rgba(0, 0, 0, 0.7);
 }
 
 #emergencyButton {
   align-self: flex-end;
   padding: 15px;
   border: 1px solid black;
-  font-size: 20px;
+  font-size: 40%;
   background-color: rgba(59, 33, 29, 0.5);
   backdrop-filter: blur(8px);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
   margin: 2%;
   width: 100%;
+  border-radius: 9px;
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   transition: background-color 0.3s;
 }
 
 #emergencyButton:hover {
+  cursor: pointer;
   background-color: rgba(100, 0, 0, 0.5);
+  transform: translateY(-5px);
+  box-shadow: 0 9px 6px rgba(0, 0, 0, 0.7);
 }
 
 .localResources {
