@@ -5,10 +5,6 @@ interface showSurvey {
   onClose: () => void;
 }
 
-const answerArray = useRef([]);
-
-function handleYesButtonClick(): void {}
-
 // This component is passed an object of type showSurvey that only contains a function
 // that should return void. It is passed a function definition (in LandingPage.tsx)
 // that tells the showButton state to set itself to false.
@@ -20,7 +16,16 @@ const Survey = ({ onClose }: showSurvey) => {
     };
   }, []);
 
-  var answerArray = [];
+  const answerArray = useRef<boolean[]>([]);
+
+  function handleYesButtonClick(): void {
+    answerArray.current.push(true);
+    console.log(answerArray.current);
+  }
+  function handleNoButtonClick(): void {
+    answerArray.current.push(false);
+    console.log(answerArray.current);
+  }
 
   return (
     <div className={styles.surveyBase}>
@@ -33,7 +38,7 @@ const Survey = ({ onClose }: showSurvey) => {
           <p>Hello</p>
           <span>
             <button onClick={handleYesButtonClick}>Yes</button>
-            <button>No</button>
+            <button onClick={handleNoButtonClick}>No</button>
           </span>
         </div>
       </div>
