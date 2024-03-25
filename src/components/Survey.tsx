@@ -10,15 +10,20 @@ interface showSurvey {
 
 // The structure of our json file containing the survey questions
 interface JsonData {
-  QuestionOne: string;
+  [key: string]: string;
 }
 
 // This component is passed an object of type showSurvey that only contains a function
 // that should return void. It is passed a function definition (in LandingPage.tsx)
 // that tells the showButton state to set itself to false.
+/**
+ *
+ * @param onClose A callback function from LandingPage.tsx that handles what happens when the user closes the survey box
+ * @returns JSX.Element - This is the survey box that appears when clicking on the "I'm new" button
+ */
 const Survey = ({ onClose }: showSurvey) => {
   const [jsonData, setJsonData] = useState<JsonData | null>(null);
-
+  const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const answerArray = useRef<boolean[]>([]);
 
   useEffect(() => {
@@ -28,7 +33,7 @@ const Survey = ({ onClose }: showSurvey) => {
     };
   }, []);
 
-  // The survey questions are served through a JSON file the public folder and are thus accessed through an asynchronous fetch request
+  // The survey questions are served through a JSON file the public folder and are thus accessed through this asynchronous fetch request
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -43,13 +48,10 @@ const Survey = ({ onClose }: showSurvey) => {
     fetchData();
   }, []);
 
-  function handleYesButtonClick(): void {
-    answerArray.current.push(true);
+  function handleAnswerButtonClick(answer: boolean): void {
+    answerArray.current.push(answer);
     console.log(answerArray.current);
-  }
-  function handleNoButtonClick(): void {
-    answerArray.current.push(false);
-    console.log(answerArray.current);
+    setCurrentQuestionIndex((current) => current + 1);
   }
 
   return (
@@ -59,12 +61,16 @@ const Survey = ({ onClose }: showSurvey) => {
           back
         </button>
         <div id={styles.surveyBody}>
-          {jsonData && (
+          {jsonData && currentQuestionIndex < Object.keys(jsonData).length && (
             <div>
-              <h1>{jsonData.QuestionOne}</h1>
+              <h1>{jsonData[Object.keys(jsonData)[currentQuestionIndex]]}</h1>
               <span>
-                <button onClick={handleYesButtonClick}>Yes</button>
-                <button onClick={handleNoButtonClick}>No</button>
+                <button onClick={() => handleAnswerButtonClick(true)}>
+                  Yes
+                </button>
+                <button onClick={() => handleAnswerButtonClick(false)}>
+                  No
+                </button>
               </span>
             </div>
           )}
