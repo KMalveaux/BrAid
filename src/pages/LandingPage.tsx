@@ -63,7 +63,7 @@ const LandingPage = () => {
           </div>
 
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m26!1m12!1m3!1d27521.92424640863!2d-91.18472174475097!3d30.429282643001827!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m11!3e0!4m3!3m2!1d30.407947099999998!2d-91.1799602!4m5!1s0x8626a120c702007d%3A0x115c5b58d10c6be9!2sSt.%20Vincent%20de%20Paul%20Bishop%20Ott%20Sweet%20Dreams%20Shelter%2C%201623%20Convention%20St%2C%20Baton%20Rouge%2C%20LA%2070802!3m2!1d30.4488037!2d-91.1722853!5e0!3m2!1sen!2sus!4v1708982932922!5m2!1sen!2sus"
+            src="https://umap.openstreetmap.fr/en/map/braid-map-wip_1040730#16/30.4459/-91.1632"
             width="600"
             height="450"
             loading="lazy"
