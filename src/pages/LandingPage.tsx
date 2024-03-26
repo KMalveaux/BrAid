@@ -1,18 +1,21 @@
+// Third Party Imports
+import { useState } from "react";
 // Local Imports
 import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 import Survey from "../components/Survey";
-import { MouseEventHandler, useState } from "react";
+
+import toggleState from "../functions/stateToggler";
 
 const downArrow = require("../images/DownArrow.png");
 
+/**
+ * Represents the Home page, the default page of the website
+ * @returns React Component
+ */
 const LandingPage = () => {
-  const [showSurvey, setShowSurvey] = useState(false);
-
-  const surveyButtonFunc: MouseEventHandler<HTMLParagraphElement> = (event) => {
-    setShowSurvey((prevState) => !prevState);
-  };
+  const [showSurvey, setShowSurvey] = useState<boolean>(false);
 
   return (
     <div className={styles.pageBase}>
@@ -42,7 +45,10 @@ const LandingPage = () => {
               alignSelf: "flex-end",
             }}
           >
-            <p id={styles.confusedButton} onClick={surveyButtonFunc}>
+            <p
+              id={styles.confusedButton}
+              onClick={() => setShowSurvey(toggleState(showSurvey))}
+            >
               I'm new!
             </p>
             <p id={styles.emergencyButton}>I have an emergency!</p>
@@ -63,6 +69,7 @@ const LandingPage = () => {
           </div>
 
           <iframe
+            title="interactive map"
             src="https://umap.openstreetmap.fr/en/map/braid-map-wip_1040730#16/30.4459/-91.1632"
             width="600"
             height="450"

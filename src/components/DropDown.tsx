@@ -6,6 +6,13 @@ interface Props {
   items: string[];
 }
 
+/**
+ * Represents a drop down menu to be used on a banner
+ *
+ * @param title The word listed as the drop down's header
+ * @param items A string array that contains each item to be listed under the dropdown as a list element
+ * @returns React Component
+ */
 const DropDown: React.FC<Props> = ({ title, items }: Props) => {
   const [showDropdown, setShowDropdown] = useState(false);
 

@@ -10,10 +10,11 @@ interface Props {
 }
 
 /**
+ * Represents the selectable filters that should adjust the points displayed on the interactive map
  *
- * @param title The title of the dropdown
- * @param filters[]  An array of filters to be displayed as a list in the drop down UI
- * @returns JSX.Element representing an expandable dropdown menu containing filters
+ * @param title The word listed as the drop down's header
+ * @param filters[]  An string array of items to be listed as selectable filters under the drop down
+ * @returns React Component
  */
 const Filters: React.FC<Props> = ({ title, filters }: Props) => {
   const [showDropdown, setShowDropdown] = useState(false);

@@ -2,30 +2,30 @@
 import { useEffect, useState, useRef } from "react";
 
 // Local imports
+import { surveyQuestions } from "../interfaces/JsonSurveyQuestions";
+
 import styles from "../css/Survey.module.css";
 
 interface showSurvey {
   onClose: () => void;
 }
 
-// The structure of our json file containing the survey questions
-interface JsonData {
-  [key: string]: string;
-}
-
 // This component is passed an object of type showSurvey that only contains a function
 // that should return void. It is passed a function definition (in LandingPage.tsx)
 // that tells the showButton state to set itself to false.
 /**
+ *  This is the survey box that appears when clicking on the "I'm new" button
  *
  * @param onClose A callback function from LandingPage.tsx that handles what happens when the user closes the survey box
- * @returns JSX.Element - This is the survey box that appears when clicking on the "I'm new" button
+ * @returns React Component
  */
 const Survey = ({ onClose }: showSurvey) => {
-  const [jsonData, setJsonData] = useState<JsonData | null>(null);
+  const [surveyQuestions, setsurveyQuestions] =
+    useState<surveyQuestions | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const answerArray = useRef<boolean[]>([]);
 
+  // Disables user scrolling while this component is mounted
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -39,7 +39,7 @@ const Survey = ({ onClose }: showSurvey) => {
       try {
         const response = await fetch("../surveyQuestions.json");
         const data = await response.json();
-        setJsonData(data);
+        setsurveyQuestions(data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
@@ -48,6 +48,7 @@ const Survey = ({ onClose }: showSurvey) => {
     fetchData();
   }, []);
 
+  // Answering a survey question pushes the result to a boolean array and advances to the next question
   function handleAnswerButtonClick(answer: boolean): void {
     answerArray.current.push(answer);
     console.log(answerArray.current);
@@ -61,19 +62,26 @@ const Survey = ({ onClose }: showSurvey) => {
           back
         </button>
         <div id={styles.surveyBody}>
-          {jsonData && currentQuestionIndex < Object.keys(jsonData).length && (
-            <div>
-              <h1>{jsonData[Object.keys(jsonData)[currentQuestionIndex]]}</h1>
-              <span>
-                <button onClick={() => handleAnswerButtonClick(true)}>
-                  Yes
-                </button>
-                <button onClick={() => handleAnswerButtonClick(false)}>
-                  No
-                </button>
-              </span>
-            </div>
-          )}
+          {surveyQuestions &&
+            currentQuestionIndex < Object.keys(surveyQuestions).length && (
+              <div>
+                <h1>
+                  {
+                    surveyQuestions[
+                      Object.keys(surveyQuestions)[currentQuestionIndex]
+                    ]
+                  }
+                </h1>
+                <span>
+                  <button onClick={() => handleAnswerButtonClick(true)}>
+                    Yes
+                  </button>
+                  <button onClick={() => handleAnswerButtonClick(false)}>
+                    No
+                  </button>
+                </span>
+              </div>
+            )}
         </div>
       </div>
     </div>
