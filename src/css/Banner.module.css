@@ -1,14 +1,30 @@
+@import "globals.css";
+
 .bannerBase {
   display: flex;
   position: fixed;
   width: 100%;
-  height: 200px;
-  background-color: gray;
+  height: var(--bannerHeight);
+  background: linear-gradient(to right, rgb(43, 41, 41) 10%, gray 80%);
+  z-index: 2;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .bannerContent {
   display: flex;
   width: 100%;
   height: 100%;
-  justify-content: space-evenly;
+}
+
+#profileIcon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-self: center;
+  font-size: 60px;
+  margin-right: 5%;
+}
+
+#profileIcon p {
+  font-size: 20px;
 }
