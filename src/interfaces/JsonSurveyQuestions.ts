@@ -1,4 +1,4 @@
-// The structure of our json file containing the survey questions
+// The structure of the survey questions object
 export interface surveyQuestions {
   [key: string]: string;
 }

@@ -1,7 +1,7 @@
 // Third Party Imports
+import React, { useEffect, useState } from "react";
 
 // Local Imports
-import { useEffect } from "react";
 import styles from "../css/Survey.module.css";
 import Survey from "./Survey";
 
@@ -14,6 +14,9 @@ interface showSurvey {
  * @returns React Component
  */
 const SignUp = ({ onClose }: showSurvey) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   // Disables user scrolling while this component is mounted
   useEffect(() => {
     document.body.style.overflow = "hidden";
@@ -21,6 +24,32 @@ const SignUp = ({ onClose }: showSurvey) => {
       document.body.style.overflowY = "scroll";
     };
   }, []);
+
+  const handleSubmit = async (event: React.FormEvent) => {
+    event.preventDefault();
+
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("http://localhost:8080/login", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          username,
+          password,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+    } catch (error) {
+      console.error("error", error);
+    }
+  };
 
   return (
     <div className={styles.surveyBase}>
@@ -32,10 +61,29 @@ const SignUp = ({ onClose }: showSurvey) => {
           <h1>
             Creating an account allows you to get the help you need even faster!
           </h1>
-          <p>Username: </p>
-          <input></input>
-          <p>Password: </p>
-          <input></input>
+          <form onSubmit={handleSubmit}>
+            <label>
+              <p>Username: </p>
+              <input
+                name="username"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              ></input>
+            </label>
+            <label>
+              <p>Password: </p>
+              <input
+                name="password"
+                type="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              ></input>
+            </label>
+            <input type="submit" value="Login"></input>
+          </form>
+
+          <p>Already have an account?</p>
+          <button>click me!</button>
         </div>
       </div>
     </div>
