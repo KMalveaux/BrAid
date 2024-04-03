@@ -1,34 +1,46 @@
 // Third Party Imports
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // Local Imports
 import styles from "../css/Survey.module.css";
-import hashString from "../functions/hasher";
+import Survey from "./Survey";
 
 interface showSurvey {
   onClose: () => void;
 }
 
-const SignUp = ({ onClose }: showSurvey) => {
-  const [username1, setUsername] = useState("");
+/**
+ * Represents the sign up screen
+ * @returns React Component
+ */
+const SignIn = ({ onClose }: showSurvey) => {
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  // Disables user scrolling while this component is mounted
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflowY = "scroll";
+    };
+  }, []);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    const passwordHash1 = await hashString(password);
-    const newUserData = {
-      username: username1,
-      passwordHash: passwordHash1,
-    };
+    const form = event.target as HTMLFormElement;
+    const formData = new FormData(form);
 
     try {
-      const response = await fetch("http://localhost:8080/createUser", {
+      const response = await fetch("http://localhost:8080/login", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(newUserData),
+        body: JSON.stringify({
+          username,
+          password,
+        }),
       });
 
       if (!response.ok) {
@@ -46,15 +58,13 @@ const SignUp = ({ onClose }: showSurvey) => {
           back
         </button>
         <div id={styles.surveyBody}>
-          <h1>
-            Creating an account allows you to get the help you need even faster!
-          </h1>
+          <h1>This is the sign in page</h1>
           <form onSubmit={handleSubmit}>
             <label>
               <p>Username: </p>
               <input
                 name="username"
-                value={username1}
+                value={username}
                 onChange={(e) => setUsername(e.target.value)}
               ></input>
             </label>
@@ -70,7 +80,7 @@ const SignUp = ({ onClose }: showSurvey) => {
             <input type="submit" value="Login"></input>
           </form>
 
-          <p>Already have an account?</p>
+          <p>Don't have an account?</p>
           <button>click me!</button>
         </div>
       </div>
@@ -78,4 +88,4 @@ const SignUp = ({ onClose }: showSurvey) => {
   );
 };
 
-export default SignUp;
+export default SignIn;

@@ -21,6 +21,7 @@ const LandingPage = () => {
     <div className={styles.pageBase}>
       <Banner />
       {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
+
       <div className={styles.pageContent}>
         <div className={styles.imageContainer}>
           <div id={styles.introductionPlate}>

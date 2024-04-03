@@ -37,8 +37,8 @@ sequelize
   .sync()
   .then(async () => {
     console.log("Database synced successfully");
-    createNewAccount(UserModel, "testUser1", "123");
-    loginUser(UserModel, "testUser1", "123");
+    // createNewAccount(UserModel, "testUser1", "123");
+    // loginUser(UserModel, "testUser1", "123");
   })
   .catch((err) => {
     console.error("Error syncing database:", err);

@@ -1,24 +1,16 @@
-const bcrypt = require("bcrypt");
+import bcrypt from "bcryptjs";
 
-class authenticator {
-    private saltRounds: number = 2;
+/**
+ * Generates a salted hash of a string
+ * @param text The string to be encrypted
+ * @returns A hash of the passed in text
+ */
+const hashString = async (text: string): Promise<string> => {
+  const salt = bcrypt.genSaltSync(10)
+  const hashedPassword: string = await bcrypt.hashSync(text, salt);
+  console.log("HASHED PASSWORD " + hashedPassword);
+  
+  return hashedPassword;
+};
 
-
-  public constructor() {}
-
-  /**
-   * Generates a salted hash of a string
-   * @param text The string to be encrypted
-   * @returns A hash of the passed in text
-   */
-  public async hashString(text: string): Promise<string> {
-    const hashedPassword: string = await bcrypt.hash(text, this.saltRounds);
-    return hashedPassword;
-  }
-
-  public compareHashes(){
-    // Send given hash to server and compare hashes on server. Return user profile if correct.
-  }
-
-
-}
+export default hashString;

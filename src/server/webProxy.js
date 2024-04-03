@@ -1,9 +1,12 @@
 const express = require("express");
 const cors = require("cors");
+const { Sequelize, DataTypes } = require("sequelize");
+const jwt = require("jsonwebtoken");
 const app = express();
 const port = 8080;
 
-const { Sequelize, DataTypes } = require("sequelize");
+// Secret key for JWT signing (should be securely stored)
+const secretKey = "your_secret_key";
 
 app.use(cors());
 app.use(express.json());
@@ -40,19 +43,24 @@ app.get("/", (req, res) => {
  *  be a check to see if a given username already exists.
  */
 app.post("/createUser", (req, res) => {
-  createNewAccount(req.body.username, req.body.passwordHash);
+  createNewAccount(UserModel, req.body.username, req.body.passwordHash);
+  console.log("hello");
 });
 
 /**
- * Logins in a user using their account name and a password hash
+ * Endpoint for user login
  */
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
+  const userData = loginUser(UserModel, username, password);
 
-  loginUser(UserModel, username, password);
-  console.log("Username: " + username);
-  console.log("Password: " + password);
-  res.send("Login Attempted!");
+  if (!userData || Object.keys(userData).length === 0) {
+    return res.status(401).json({ message: "Invalid username or password" });
+  }
+
+  const token = jwt.sign(userData, secretKey, { expiresIn: "1h" });
+
+  res.json({ token });
 });
 
 app.listen(port, () => {
