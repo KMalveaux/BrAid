@@ -58,7 +58,7 @@ const SignIn = ({ onClose }: showSurvey) => {
           back
         </button>
         <div id={styles.surveyBody}>
-          <h1>This is the sign in page</h1>
+          <h1>Sign in to B+RAid</h1>
           <form onSubmit={handleSubmit}>
             <label>
               <p>Username: </p>
