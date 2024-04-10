@@ -1,5 +1,5 @@
 // Third Party Imports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Local Imports
 import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
@@ -7,9 +7,7 @@ import Filters from "../components/Filters";
 import Survey from "../components/Survey";
 
 import toggleState from "../functions/stateToggler";
-
 const downArrow = require("../images/DownArrow.png");
-
 /**
  * Represents the Home page, the default page of the website
  * @returns React Component
@@ -70,12 +68,10 @@ const LandingPage = () => {
           </div>
 
           <iframe
-            title="interactive map"
-            src="https://umap.openstreetmap.fr/en/map/braid-map-wip_1040730#16/30.4459/-91.1632"
-            width="600"
-            height="450"
-            loading="lazy"
-          />
+            width="500"
+            height="300"
+            src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}
+          ></iframe>
         </div>
       </div>
     </div>
