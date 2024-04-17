@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 // Local Imports
 import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
+import AlternateBanner from "../components/AlternateBanner";
 import Filters from "../components/Filters";
 import Survey from "../components/Survey";
 import InteractiveMap from "../components/InteractiveMap";
@@ -18,7 +19,7 @@ const LandingPage = () => {
 
   return (
     <div className={styles.pageBase}>
-      <Banner />
+      <AlternateBanner />
       {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
 
       <div className={styles.pageContent}>
