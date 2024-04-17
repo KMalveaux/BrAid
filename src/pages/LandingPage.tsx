@@ -5,6 +5,7 @@ import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
 import Filters from "../components/Filters";
 import Survey from "../components/Survey";
+import InteractiveMap from "../components/InteractiveMap";
 
 import toggleState from "../functions/stateToggler";
 const downArrow = require("../images/DownArrow.png");
@@ -67,11 +68,12 @@ const LandingPage = () => {
             <Filters title="Safety" filters={["Police", "Fire", "Medical"]} />
           </div>
 
-          <iframe
+          {/**<iframe
             width="500"
             height="300"
             src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}
-          ></iframe>
+          ></iframe>*/}
+          <InteractiveMap />
         </div>
       </div>
     </div>
