@@ -1,4 +1,5 @@
 {
-    "QuestionOne": "Do you have any family members experiencing homelessness?",
-    "QuestionTwo": "Do you have a car?"
+    "QuestionOne": "Are you experiencing homelessness?",
+    "QuestionTwo": "Do you have personal motorized transportation?",
+    "QuestionThree": "Are there certain foods which may be harmful to your health?"
 }

@@ -1,0 +1,10 @@
+/* This is a className css rule */
+.outerBox {
+  padding: 2%;
+  background-color: lightcoral;
+}
+
+/* This is an id css rule */
+#innerText {
+  background-color: lightblue;
+}

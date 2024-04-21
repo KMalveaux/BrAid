@@ -1,15 +1,14 @@
 // Third Party Imports
-import { useState } from "react";
+import { useEffect, useState } from "react";
 // Local Imports
 import styles from "../css/LandingPage.module.css";
 import Banner from "../components/Banner";
+import AlternateBanner from "../components/AlternateBanner";
 import Filters from "../components/Filters";
 import Survey from "../components/Survey";
 
 import toggleState from "../functions/stateToggler";
-
 const downArrow = require("../images/DownArrow.png");
-
 /**
  * Represents the Home page, the default page of the website
  * @returns React Component
@@ -19,40 +18,29 @@ const LandingPage = () => {
 
   return (
     <div className={styles.pageBase}>
-      <Banner />
+      <AlternateBanner />
       {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
+
       <div className={styles.pageContent}>
         <div className={styles.imageContainer}>
           <div id={styles.introductionPlate}>
-            <p>Welcome to B+RAid</p>
+            <p style={{ fontWeight: "600", fontSize: "2em" }}>Welcome</p>
             <p
               style={{
                 fontSize: "24px",
-                paddingTop: "10%",
                 width: "70%",
               }}
             >
               A community dedicated to helping the homeless of Baton Rouge
             </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              position: "relative",
-              top: "-30%",
-              width: "30%",
-              alignSelf: "flex-end",
-            }}
-          >
             <p
               id={styles.confusedButton}
               onClick={() => setShowSurvey(toggleState(showSurvey))}
             >
-              I'm new!
+              Start Here
             </p>
-            <p id={styles.emergencyButton}>I have an emergency!</p>
           </div>
+
           <img
             id={styles.downArrow}
             onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })}
@@ -60,7 +48,9 @@ const LandingPage = () => {
             alt="Down Arrow"
           />
         </div>
-        <p>Local Resources</p>
+        <p style={{ fontWeight: "600", fontSize: "4em", color: "white" }}>
+          Resource Map
+        </p>
         <div className={styles.localResources}>
           <div id={styles.filtersContainer}>
             <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
@@ -69,12 +59,10 @@ const LandingPage = () => {
           </div>
 
           <iframe
-            title="interactive map"
-            src="https://umap.openstreetmap.fr/en/map/braid-map-wip_1040730#16/30.4459/-91.1632"
-            width="600"
-            height="450"
-            loading="lazy"
-          />
+            width="500"
+            height="300"
+            src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}
+          ></iframe>
         </div>
       </div>
     </div>

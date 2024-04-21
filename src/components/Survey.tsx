@@ -2,9 +2,8 @@
 import { useEffect, useState, useRef } from "react";
 
 // Local imports
-import { surveyQuestions } from "../interfaces/JsonSurveyQuestions";
-
 import styles from "../css/Survey.module.css";
+import { SurveyHook } from "../hooks/FetchSurveyQuestions";
 
 interface showSurvey {
   onClose: () => void;
@@ -20,8 +19,6 @@ interface showSurvey {
  * @returns React Component
  */
 const Survey = ({ onClose }: showSurvey) => {
-  const [surveyQuestions, setsurveyQuestions] =
-    useState<surveyQuestions | null>(null);
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
   const answerArray = useRef<boolean[]>([]);
 
@@ -33,20 +30,7 @@ const Survey = ({ onClose }: showSurvey) => {
     };
   }, []);
 
-  // The survey questions are served through a JSON file the public folder and are thus accessed through this asynchronous fetch request
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch("../surveyQuestions.json");
-        const data = await response.json();
-        setsurveyQuestions(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-
-    fetchData();
-  }, []);
+  const surveyQuestions = SurveyHook();
 
   // Answering a survey question pushes the result to a boolean array and advances to the next question
   function handleAnswerButtonClick(answer: boolean): void {
