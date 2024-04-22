@@ -25,35 +25,23 @@ const LandingPage = () => {
       <div className={styles.pageContent}>
         <div className={styles.imageContainer}>
           <div id={styles.introductionPlate}>
-            <p>Welcome to B+RAid</p>
+            <p style={{ fontWeight: "600", fontSize: "2em" }}>Welcome</p>
             <p
               style={{
                 fontSize: "24px",
-                paddingTop: "10%",
                 width: "70%",
               }}
             >
               A community dedicated to helping the homeless of Baton Rouge
             </p>
-          </div>
-          <div
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              position: "relative",
-              top: "-30%",
-              width: "30%",
-              alignSelf: "flex-end",
-            }}
-          >
             <p
               id={styles.confusedButton}
               onClick={() => setShowSurvey(toggleState(showSurvey))}
             >
-              I'm new!
+              Start Here
             </p>
-            <p id={styles.emergencyButton}>I have an emergency!</p>
           </div>
+
           <img
             id={styles.downArrow}
             onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })}
@@ -61,7 +49,9 @@ const LandingPage = () => {
             alt="Down Arrow"
           />
         </div>
-        <p>Local Resources</p>
+        <p style={{ fontWeight: "600", fontSize: "4em", color: "white" }}>
+          Resource Map
+        </p>
         <div className={styles.localResources}>
           <div id={styles.filtersContainer}>
             <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
