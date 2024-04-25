@@ -100,3 +100,9 @@
 #filtersContainer {
   width: 20%;
 }
+
+.selectablePlacesContainer {
+  margin: 3%;
+  padding: 3%;
+  border: 2px solid white;
+}

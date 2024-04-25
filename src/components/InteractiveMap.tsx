@@ -18,10 +18,13 @@ const InteractiveMap = () => {
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || "",
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY || "",
   });
 
   const [map, setMap] = React.useState<GoogleMap | null>(null);
+
+  console.log(JSON.stringify(process.env));
+  console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
 
   const onLoad = React.useCallback(function callback(map: any) {
     // This is just an example of getting and using the map instance!!! don't just blindly copy!
