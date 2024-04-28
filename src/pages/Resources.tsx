@@ -2,6 +2,8 @@
 
 // Local Imports
 import styles from "../css/Resources.module.css";
+import Banner from "../components/Banner";
+import AlternateBanner from "../components/AlternateBanner";
 
 /**
  * This represents the resources page of the website.

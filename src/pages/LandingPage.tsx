@@ -25,15 +25,8 @@ const LandingPage = () => {
       <div className={styles.pageContent}>
         <div className={styles.imageContainer}>
           <div id={styles.introductionPlate}>
-            <p style={{ fontWeight: "600", fontSize: "2em" }}>Welcome</p>
-            <p
-              style={{
-                fontSize: "24px",
-                width: "70%",
-              }}
-            >
-              A community dedicated to helping the homeless of Baton Rouge
-            </p>
+            <h1>Welcome</h1>
+            <p> A community dedicated to helping the houseless of Baton Rouge </p>
             <p
               id={styles.confusedButton}
               onClick={() => setShowSurvey(toggleState(showSurvey))}
@@ -41,25 +34,9 @@ const LandingPage = () => {
               Start Here
             </p>
           </div>
-
-          <img
-            id={styles.downArrow}
-            onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })}
-            src={downArrow}
-            alt="Down Arrow"
-          />
+          {/*<img id={styles.downArrow} onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })} src={downArrow} alt="Down Arrow"/>*/}
         </div>
-        <p
-          style={{
-            paddingLeft: "5%",
-            paddingBottom: "3%",
-            fontWeight: "600",
-            fontSize: "4em",
-            color: "white",
-          }}
-        >
-          Resource Map
-        </p>
+       <h2>Resource Map</h2>
         <div className={styles.localResources}>
           <div id={styles.filtersContainer}>
             <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
@@ -71,11 +48,7 @@ const LandingPage = () => {
             />
           </div>
 
-          {/**<iframe
-            width="500"
-            height="300"
-            src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}
-          ></iframe>*/}
+          {/**<iframe width="500" height="300" src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}></iframe>*/}
           <InteractiveMap />
         </div>
         <div className={styles.selectablePlacesContainer}>
