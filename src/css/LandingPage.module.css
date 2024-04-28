@@ -1,7 +1,7 @@
 @import "globals.css";
 
 .pageBase {
-  background-color: --crimson;
+  background-color: #BE1E2D;
   height: 100%;
   background-image: url("../images/BTRAID_BG-100.jpg");
   background-attachment: fixed;
@@ -47,6 +47,7 @@
   padding: 15px;
   border: 1px solid black;
   font-size: 40%;
+  color: white;
   background-color: rgba(12, 8, 89);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
   margin: 2%;
