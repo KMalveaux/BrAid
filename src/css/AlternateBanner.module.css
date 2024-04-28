@@ -3,7 +3,7 @@
 .BannerContainer {
   display: flex;
   box-sizing: border-box;
-  position: fixed;
+  position: relative;
   height: var(--bannerHeight);
   width: 100%;
   z-index: 2;
@@ -11,12 +11,13 @@
   padding-right: 2%;
   padding-bottom: 0.5%;
   overflow: visible;
-  margin-top: 2%;
   /*backdrop-filter: blur(1px);*/
 }
 
 #logo {
   /*margin-right: 15%;*/
+  margin-top: 2%;
+  width: 200px;
 }
 
 #linksContainer {
@@ -26,8 +27,10 @@
   font-size: 1.5rem;
   height: 100%;
   width: 30%;
-  padding-left: 30%;
-  padding-right: 10%;
+  gap: 29%;
+  margin-top: 1%;
+  padding-left: 20%;
+  padding-right: 20%;
   color: white;
 }
 
@@ -50,6 +53,8 @@
 #profileIcon {
   display: flex;
   width: 40%;
+  margin-left: 50%;
+  margin-top: 4%;
 }
 
 #signInButton {
@@ -68,6 +73,7 @@
   display: flex;
   justify-content: center;
   transition: background-color 0.3s;
+  margin-left: 50%;
 }
 
 #signInButton:hover{
@@ -82,6 +88,7 @@
   border-radius: 6px;
   padding: 3%;
   width: 55%;
+  margin-left: 50%;
 }
 
 #logInButton:hover {
