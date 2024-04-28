@@ -1,8 +1,9 @@
 @import "globals.css";
 
 .pageBase {
-  background-color: linear-gradient(--cherry, --crimson);
-  height: 2000px;
+  background-color: lightblue;
+  height: 100%;
+  background-image: url("../images/BTRAID_BG-100.jpg");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -98,10 +99,4 @@
 
 #filtersContainer {
   width: 20%;
-}
-
-.selectablePlacesContainer {
-  margin: 3%;
-  padding: 3%;
-  border: 2px solid white;
 }
