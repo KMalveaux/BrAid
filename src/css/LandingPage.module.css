@@ -1,9 +1,8 @@
 @import "globals.css";
 
 .pageBase {
-  background-color: lightblue;
+  background-color: linear-gradient(--cherry, --crimson);
   height: 2000px;
-  background-image: linear-gradient(--cherry, --crimson);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -99,4 +98,10 @@
 
 #filtersContainer {
   width: 20%;
+}
+
+.selectablePlacesContainer {
+  margin: 3%;
+  padding: 3%;
+  border: 2px solid white;
 }

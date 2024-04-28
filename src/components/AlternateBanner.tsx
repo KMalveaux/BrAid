@@ -36,11 +36,17 @@ const AlternateBanner: React.FC = () => {
           src={require("../images/profileIcon.png")}
           alt="Profile Icon Here"
         />
-        <button onClick={() => setShowSignIn(toggleState(showSignIn))}>
-          Log in
+        <button
+          id={styles.signInButton}
+          onClick={() => setShowSignIn(toggleState(showSignIn))}
+        >
+          Log In
         </button>
-        <button onClick={() => setShowSignUp(toggleState(showSignUp))}>
-          Sign in
+        <button
+          id={styles.logInButton}
+          onClick={() => setShowSignUp(toggleState(showSignUp))}
+        >
+          Sign Up
         </button>
       </div>
     </div>

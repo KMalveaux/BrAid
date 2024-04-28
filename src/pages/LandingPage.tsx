@@ -6,6 +6,7 @@ import Banner from "../components/Banner";
 import AlternateBanner from "../components/AlternateBanner";
 import Filters from "../components/Filters";
 import Survey from "../components/Survey";
+import InteractiveMap from "../components/InteractiveMap";
 
 import toggleState from "../functions/stateToggler";
 const downArrow = require("../images/DownArrow.png");
@@ -48,7 +49,15 @@ const LandingPage = () => {
             alt="Down Arrow"
           />
         </div>
-        <p style={{ fontWeight: "600", fontSize: "4em", color: "white" }}>
+        <p
+          style={{
+            paddingLeft: "5%",
+            paddingBottom: "3%",
+            fontWeight: "600",
+            fontSize: "4em",
+            color: "white",
+          }}
+        >
           Resource Map
         </p>
         <div className={styles.localResources}>
@@ -56,13 +65,21 @@ const LandingPage = () => {
             <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
             <Filters title="Food" filters={["Breakfast", "Lunch", "Dinner"]} />
             <Filters title="Safety" filters={["Police", "Fire", "Medical"]} />
+            <Filters
+              title="Medical"
+              filters={["Substance Abuse", "Fire", "Medical"]}
+            />
           </div>
 
-          <iframe
+          {/**<iframe
             width="500"
             height="300"
             src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}
-          ></iframe>
+          ></iframe>*/}
+          <InteractiveMap />
+        </div>
+        <div className={styles.selectablePlacesContainer}>
+          <p>hello</p>
         </div>
       </div>
     </div>
