@@ -30,15 +30,15 @@ const Banner = () => {
 
       <div className={styles.bannerContent}>
         <DropDown
-          title="Health"
+          title="Home"
           items={["Medication", "Injury", "Emergencies"]}
         />
         <DropDown
-          title="Housing"
-          items={["Shelters", "Temporary Housing", "Permanent Housing"]}
+          title="Resources"
+          items={["Food", "Health", "Shelter", "Miscellaneous"]}
         />
         <DropDown
-          title="Food"
+          title="About"
           items={[
             "24 Hour Food Banks",
             "Food assistances programs",

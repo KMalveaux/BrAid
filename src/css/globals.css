@@ -2,4 +2,8 @@
   --bannerHeight: 110px;
   --cherry: #E11F26;
   --crimson: #BE1E2D;
+  --navy: #1b144e; /*primary button*/
+  --white: #FFFFFF; /*prim button hover state - secondondary button background*/
+  --poppy: #cec8fe; /*secondary button*/
+  --royalkblue: #422CE8;
 }
