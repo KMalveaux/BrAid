@@ -28,7 +28,7 @@ const LandingPage = () => {
             <h1>Welcome</h1>
             <p> A community dedicated to helping the houseless of Baton Rouge </p>
             <p
-              id={styles.confusedButton}
+              id={styles.primaryButton}
               onClick={() => setShowSurvey(toggleState(showSurvey))}
             >
               Start Here
@@ -37,6 +37,7 @@ const LandingPage = () => {
           {/*<img id={styles.downArrow} onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })} src={downArrow} alt="Down Arrow"/>*/}
         </div>
        <h2>Resource Map</h2>
+
         <div className={styles.localResources}>
           <div id={styles.filtersContainer}>
             <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />

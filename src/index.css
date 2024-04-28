@@ -23,13 +23,21 @@ p {
   font-family: english-grotesque, sans-serif;
   font-weight: 300;
   font-style: normal;
+  font-size: 24px;
 }
 
 h1{
-
+  font-family: english-grotesque, sans-serif;
+  font-weight: 500; 
+  font-style: normal;
+  font-size: 72px;
 }
 
 h2{
+  font-family: english-grotesque, sans-serif;
+  font-weight: 500; 
+  font-style: normal;
+  font-size: 72px;
 
 }
 /*@font-face {
