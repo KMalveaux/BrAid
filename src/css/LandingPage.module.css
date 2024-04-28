@@ -3,7 +3,7 @@
 .pageBase {
   background-color: lightblue;
   height: 2000px;
-  background-image: url("../images/FamilyIntrodutionImage.jpg");
+  background-image: linear-gradient(--cherry, --crimson);
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
@@ -45,7 +45,7 @@
   height: 100px;
 }
 
-#confusedButton {
+#primarydButton {
   padding: 15px;
   border: 1px solid black;
   font-size: 40%;
@@ -59,14 +59,14 @@
   justify-content: center;
   transition: background-color 0.3s;
 }
-#confusedButton:hover {
+#primaryButton:hover {
   cursor: pointer;
   background-color: rgba(43, 39, 126);
   transform: translateY(-5px);
   box-shadow: 0 9px 6px rgba(0, 0, 0, 0.7);
 }
 
-#emergencyButton {
+#secondaryButton {
   align-self: flex-end;
   padding: 15px;
   border: 1px solid black;
@@ -83,7 +83,7 @@
   transition: background-color 0.3s;
 }
 
-#emergencyButton:hover {
+#secondaryButton:hover {
   cursor: pointer;
   background-color: rgba(100, 0, 0, 0.5);
   transform: translateY(-5px);

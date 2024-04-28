@@ -1,0 +1,25 @@
+@import "globals.css";
+
+.pageBase {
+  background-color: lightblue;
+  height: 2000px;
+  background-image: url("../images/FamilyIntrodutionImage.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+
+.imageContainer {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+
+  font-size: 70px;
+  color: aliceblue;
+  box-sizing: border-box;
+  padding: 5%;
+  justify-content: space-between;
+}
