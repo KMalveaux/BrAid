@@ -16,70 +16,89 @@ const downArrow = require("../images/DownArrow.png");
  */
 const LandingPage = () => {
   const [showSurvey, setShowSurvey] = useState<boolean>(false);
+  const [filterStates, setFilterStates] = useState<{ [key: string]: boolean }>(
+    {}
+  );
+
+  // Callback function to handle checkbox change for each filter
+  const handleCheckboxChange = (filterName: string, isChecked: boolean) => {
+    setFilterStates((prevState) => ({
+      ...prevState,
+      [filterName]: isChecked,
+    }));
+  };
+
+  // Determine the value of showList based on the state of all checkboxes
+  const showList = Object.values(filterStates).some((state) => state);
 
   return (
     <div className={styles.pageBase}>
-      <AlternateBanner />
-      {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
+      <div className={styles.pageBaseBefore}>
+        <AlternateBanner />
+        {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
 
-      <div className={styles.pageContent}>
-        <div className={styles.imageContainer}>
-          <div id={styles.introductionPlate}>
-            <p style={{ fontWeight: "600", fontSize: "2em" }}>Welcome</p>
-            <p
-              style={{
-                fontSize: "24px",
-                width: "70%",
-              }}
-            >
-              A community dedicated to helping the homeless of Baton Rouge
-            </p>
-            <p
-              id={styles.confusedButton}
-              onClick={() => setShowSurvey(toggleState(showSurvey))}
-            >
-              Start Here
-            </p>
+        <div className={styles.pageContent}>
+          <div className={styles.imageContainer}>
+            <div id={styles.introductionPlate}>
+              <p style={{ fontWeight: "600", fontSize: "2em" }}>Welcome</p>
+              <p
+                style={{
+                  fontSize: "24px",
+                  width: "40%",
+                  textAlign: "center",
+                }}
+              >
+                Are you experiencing houselessness in Baton Rouge? Help is only
+                a click away - let us locate resources tailored for YOU!
+              </p>
+              <p
+                id={styles.confusedButton}
+                onClick={() => setShowSurvey(toggleState(showSurvey))}
+              >
+                Start Here
+              </p>
+            </div>
           </div>
+          <p
+            style={{
+              paddingLeft: "5%",
+              paddingBottom: "3%",
+              fontWeight: "600",
+              fontSize: "4em",
+              color: "white",
+            }}
+          >
+            Resource Map
+          </p>
+          <div className={styles.localResources}>
+            <div id={styles.filtersContainer}>
+              <Filters
+                title="Health"
+                filters={["Mens", "Womens", "Youth"]}
+                onCheckboxChange={handleCheckboxChange}
+              />
+              <Filters
+                title="Food"
+                filters={["Breakfast", "Lunch", "Dinner"]}
+                onCheckboxChange={handleCheckboxChange}
+              />
+              <Filters
+                title="Safety"
+                filters={["Police", "Fire", "Medical"]}
+                onCheckboxChange={handleCheckboxChange}
+              />
+              <Filters
+                title="Medical"
+                filters={["Substance Abuse", "Fire", "Medical"]}
+                onCheckboxChange={handleCheckboxChange}
+              />
+            </div>
 
-          <img
-            id={styles.downArrow}
-            onClick={() => window.scrollTo({ top: 1000, behavior: "smooth" })}
-            src={downArrow}
-            alt="Down Arrow"
-          />
-        </div>
-        <p
-          style={{
-            paddingLeft: "5%",
-            paddingBottom: "3%",
-            fontWeight: "600",
-            fontSize: "4em",
-            color: "white",
-          }}
-        >
-          Resource Map
-        </p>
-        <div className={styles.localResources}>
-          <div id={styles.filtersContainer}>
-            <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
-            <Filters title="Food" filters={["Breakfast", "Lunch", "Dinner"]} />
-            <Filters title="Safety" filters={["Police", "Fire", "Medical"]} />
-            <Filters
-              title="Medical"
-              filters={["Substance Abuse", "Fire", "Medical"]}
-            />
+            <InteractiveMap />
           </div>
-
-          {/**<iframe
-            width="500"
-            height="300"
-            src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}
-          ></iframe>*/}
-          <InteractiveMap />
-        </div>
-        <div className={styles.selectablePlacesContainer}>
-          <p>hello</p>
+          <div className={styles.selectablePlacesContainer}>
+            {showList ? <p>Hello</p> : <></>}
+          </div>
         </div>
       </div>
     </div>

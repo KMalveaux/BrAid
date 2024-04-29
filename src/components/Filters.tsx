@@ -7,14 +7,8 @@ import styles from "../css/Filters.module.css";
 interface Props {
   title: string;
   filters: string[];
+  onCheckboxChange: (filterName: string, isChecked: boolean) => void;
 }
-
-const handleChange = (filterName: String, isChecked: boolean) => {
-  console.log(filterName + " is checked: " + isChecked);
-  if (isChecked) {
-    // call function to parse place information text file to update visible places.
-  }
-};
 
 /**
  * Represents the selectable filters that should adjust the points displayed on the interactive map
@@ -23,8 +17,16 @@ const handleChange = (filterName: String, isChecked: boolean) => {
  * @param filters[]  An string array of items to be listed as selectable filters under the drop down
  * @returns React Component
  */
-const Filters: React.FC<Props> = ({ title, filters }: Props) => {
+const Filters: React.FC<Props> = ({
+  title,
+  filters,
+  onCheckboxChange,
+}: Props) => {
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const handleChange = (filterName: string, isChecked: boolean) => {
+    onCheckboxChange(filterName, isChecked);
+  };
 
   return (
     <div>
