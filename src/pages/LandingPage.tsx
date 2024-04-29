@@ -7,6 +7,7 @@ import AlternateBanner from "../components/AlternateBanner";
 import Filters from "../components/Filters";
 import Survey from "../components/Survey";
 import InteractiveMap from "../components/InteractiveMap";
+import PointsOfInterest from "../components/PointOfInterest";
 
 import toggleState from "../functions/stateToggler";
 const downArrow = require("../images/DownArrow.png");
@@ -20,12 +21,59 @@ const LandingPage = () => {
     {}
   );
 
+  const [selectedPointOfInterest, setPointOfInterest] = useState<string | null>(
+    null
+  );
+
+  const [coordinatesLAT, setCoordinatesLAT] = useState<number | null>(null);
+  const [coordinatesLONG, setCoordinatesLONG] = useState<number | null>(null);
+
   // Callback function to handle checkbox change for each filter
   const handleCheckboxChange = (filterName: string, isChecked: boolean) => {
-    setFilterStates((prevState) => ({
-      ...prevState,
-      [filterName]: isChecked,
-    }));
+    setFilterStates((prevState) => {
+      // Create a copy of the previous state
+      const nextState = { ...prevState };
+
+      // Update the state with the new checkbox value
+      nextState[filterName] = isChecked;
+
+      // Remove the filter from the state if it is unchecked
+      if (!isChecked) {
+        delete nextState[filterName];
+      }
+
+      return nextState;
+    });
+  };
+
+  // Hook to log which filters are active within the state filterStates
+  useEffect(() => {
+    console.log("Updated filterStates:", filterStates);
+    console.log("Selected organization: " + selectedPointOfInterest);
+  }, [filterStates, selectedPointOfInterest]);
+
+  useEffect(() => {
+    const getMapCoordinatesForSelectedPOI = async () => {
+      try {
+        if (selectedPointOfInterest == null) {
+          return;
+        } else {
+          const response = await fetch("/pointsOfInterest.json");
+          const data = await response.json();
+          const { latitude, longitude } = data[selectedPointOfInterest];
+          setCoordinatesLAT(latitude);
+          setCoordinatesLONG(longitude);
+        }
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+
+    getMapCoordinatesForSelectedPOI();
+  }, [selectedPointOfInterest]);
+
+  const handlePointOfInterestSelected = (selectedPOI: string) => {
+    setPointOfInterest(selectedPOI);
   };
 
   // Determine the value of showList based on the state of all checkboxes
@@ -66,6 +114,7 @@ const LandingPage = () => {
               fontWeight: "600",
               fontSize: "4em",
               color: "white",
+              width: "100%",
             }}
           >
             Resource Map
@@ -89,15 +138,30 @@ const LandingPage = () => {
               />
               <Filters
                 title="Medical"
-                filters={["Substance Abuse", "Fire", "Medical"]}
+                filters={[
+                  "substanceAbuse",
+                  "Fire",
+                  "Medical",
+                  "dentalServices",
+                ]}
                 onCheckboxChange={handleCheckboxChange}
               />
             </div>
 
-            <InteractiveMap />
+            <InteractiveMap
+              latitude={coordinatesLAT}
+              longitude={coordinatesLONG}
+            />
           </div>
           <div className={styles.selectablePlacesContainer}>
-            {showList ? <p>Hello</p> : <></>}
+            {showList ? (
+              <PointsOfInterest
+                filterKeys={Object.keys(filterStates)}
+                onPOISelect={handlePointOfInterestSelected}
+              />
+            ) : (
+              <></>
+            )}
           </div>
         </div>
       </div>

@@ -26,9 +26,9 @@ const AlternateBanner: React.FC = () => {
 
       <img id={styles.logo} src={logo} alt="logo goes here" />
       <div id={styles.linksContainer}>
-        <p>Food</p>
-        <p>Safety</p>
-        <p>Medical</p>
+        <p>Home</p>
+        <p>Resources</p>
+        <p>About</p>
       </div>
       <div className={styles.profileContainer}>
         <img

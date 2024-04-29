@@ -5,9 +5,13 @@
     "The Bridge Center for Hope": {
         "mentalHealh": true,
         "substanceAbuse": true,
-        "Address": "3455 Florida St, Baton_Rouge, LA 70806"
+        "Address": "3455 Florida St, Baton Rouge, LA 70806",
+        "latitude": "30.451228192114442",
+        "longitude": "-91.15396400442509"
     },
     "Baton Rouge Area Volunteer (BRAVO) Dentists": {
-        "dentalServices": true
+        "dentalServices": true,
+        "latitude": "30.437354449294197",
+        "longitude": "-91.0569979248055"
     }
 }

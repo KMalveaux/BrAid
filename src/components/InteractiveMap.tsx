@@ -5,15 +5,21 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 // Local Imports
 import styles from "../css/InteractiveMap.module.css";
 
-const InteractiveMap = () => {
+const InteractiveMap = ({
+  latitude,
+  longitude,
+}: {
+  latitude: number | null;
+  longitude: number | null;
+}) => {
   const containerStyle = {
     width: "400px",
     height: "400px",
   };
 
   const center = {
-    lat: -3.745,
-    lng: -38.523,
+    lat: latitude !== null ? +latitude : -3.745, // Use props if available, otherwise fallback to default
+    lng: longitude !== null ? +longitude : -38.523, // Use props if available, otherwise fallback to default
   };
 
   const { isLoaded } = useJsApiLoader({
@@ -23,16 +29,16 @@ const InteractiveMap = () => {
 
   const [map, setMap] = React.useState<GoogleMap | null>(null);
 
-  console.log(JSON.stringify(process.env));
-  console.log(process.env.REACT_APP_GOOGLE_MAPS_API_KEY);
+  const onLoad = React.useCallback(
+    function callback(map: any) {
+      // This is just an example of getting and using the map instance!!! don't just blindly copy!
+      const bounds = new window.google.maps.LatLngBounds(center);
+      map.fitBounds(bounds);
 
-  const onLoad = React.useCallback(function callback(map: any) {
-    // This is just an example of getting and using the map instance!!! don't just blindly copy!
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
-    setMap(map);
-  }, []);
+      setMap(map);
+    },
+    [center]
+  );
 
   const onUnmount = React.useCallback(function callback(map: any) {
     setMap(null);
