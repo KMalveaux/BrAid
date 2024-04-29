@@ -67,6 +67,37 @@
         "Address": "1120 Government St, Baton_Rouge, LA 70802",
         "latitude": "30.443229287955013",
         "longitude": "-91.1762882752904"
+    },
+    "Yes We Cannibal - Community Fridge": {
+        "foodAssistance": true,
+        "fruit": true,
+        "vegetables": true,
+        "sandwiches": true,
+        "cannedGoods": true,
+        "hygiene": true,
+        "Address": "1600 Government St, Baton Rouge, LA 70802",
+        "latitude": "30.443531231723085",
+        "longitude": "-91.17199874696075"
+    },
+    "St. Vincent De Paul Dining Room": {
+        "foodAssistance": true,
+        "lunch": "true",
+        "dinner": "true",
+        "Address": "220 St. Vincent de Paul Dr., Baton Rouge, LA 70802",
+        "latitude": "30.44927530647219",
+        "longitude": "-91.17234438876787"
+    },
+    "Scott-Gilchirst Quality of Life Center at Bethel A.M.E.": {
+        "foodAssistance": true,
+        "lunch": true,
+        "dinner": "true",
+        "cannedGoods": true,
+        "clothing": true,
+        "Address": "1358 South Blvd. Baton Rouge, LA 70802",
+        "latitude": "30.439630753300204",
+        "longitude": "-91.17455508682683"
+
+
     }
 
 }

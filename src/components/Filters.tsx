@@ -22,7 +22,7 @@ const Filters: React.FC<Props> = ({
   filters,
   onCheckboxChange,
 }: Props) => {
-  const [showDropdown, setShowDropdown] = useState(false);
+  const [showDropdown, setShowDropdown] = useState(true);
 
   const handleChange = (filterName: string, isChecked: boolean) => {
     onCheckboxChange(filterName, isChecked);

@@ -2,19 +2,20 @@
 import React, { useEffect, useState } from "react";
 
 // Local Imports
-import styles from "../css/Survey.module.css";
+import styles from "../css/SignInUp.module.css";
 import Survey from "./Survey";
 
 interface showSurvey {
   onClose: () => void;
   onSignIn: (username: string) => void;
+  onSurveyResultsFetch: (answerArr: boolean[]) => void;
 }
 
 /**
  * Represents the sign up screen
  * @returns React Component
  */
-const SignIn = ({ onClose, onSignIn }: showSurvey) => {
+const SignIn = ({ onClose, onSignIn, onSurveyResultsFetch }: showSurvey) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -52,6 +53,34 @@ const SignIn = ({ onClose, onSignIn }: showSurvey) => {
         const responseData = await response.json();
         const { username } = responseData.userData; // Access username field from response data
         onSignIn(username);
+
+        try {
+          const surveyResponse = await fetch(
+            "http://localhost:8080/getSurveyResults",
+            {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify({
+                AccName: username,
+              }),
+            }
+          );
+          if (surveyResponse.status === 200) {
+            console.log("Survey results saved obtained");
+            const fetchedAnswers: boolean[] = Object.values(
+              await surveyResponse.json()
+            );
+            console.log("User's fetched survey answers: " + fetchedAnswers);
+
+            onSurveyResultsFetch(fetchedAnswers);
+          } else {
+            console.error("Failed to find survey results");
+          }
+        } catch (error) {
+          console.error("Error finding survey results:", error);
+        }
       } else if (response.status === 401) {
         setIsSuccess(false);
         const responseData = await response.json();

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 
+import styles from "../css/PointsOfInterest.module.css";
+
 interface OrganizationData {
   [organizationName: string]: {
     substanceAbuse?: boolean;
@@ -52,10 +54,10 @@ const PointsOfInterest: React.FC<PointsOfInterestProps> = ({
     : [];
 
   return (
-    <div style={{ display: "flex" }}>
+    <div style={{ display: "flex", flexWrap: "wrap" }}>
       {points &&
         filteredOrganizations.map(([organizationName, organizationData]) => (
-          <label key={organizationName} style={{ marginRight: "20px" }}>
+          <label id={styles.individualComponent} key={organizationName}>
             <input
               type="radio"
               name="organization"
@@ -63,12 +65,20 @@ const PointsOfInterest: React.FC<PointsOfInterestProps> = ({
               checked={selectedOrganization === organizationName}
               onChange={() => handleOrganizationSelection(organizationName)}
             />
-            <span>{organizationName}</span>
+            <span>
+              <h1>{organizationName}</h1>
+            </span>
             <p>
-              This organization is helpful for you because:{" "}
-              {filterKeys.map((key) => (
-                <p key={key}>{organizationData[key] && `${key} `}</p>
-              ))}
+              This organization is helpful for you because:
+              <ul>
+                {filterKeys.map((key) => {
+                  if (organizationData[key]) {
+                    return <li key={key}>{key}</li>;
+                  } else {
+                    return null; // Skip rendering if the key doesn't apply
+                  }
+                })}
+              </ul>
             </p>
             {organizationData.Address && (
               <p> Address: {organizationData.Address}</p>

@@ -1,6 +1,20 @@
 {
     "QuestionOne": "Are you experiencing homelessness?",
-    "QuestionTwo": "Do you have personal motorized transportation?",
-    "QuestionThree": "Are there certain foods which may be harmful to your health?",
-    "End": "This serves to mark the end of the survey"
+    "QuestionOneAndAHalf": "Are you an adult?",
+    "QuestionTwo": "Do you identify as male?",
+    "QuestionThree": "Do you identify as female?",
+    "QuestionThreeAndAHalf": "Would you require gender inclusive housing?",
+    "QuestionFour": "Have you previously been incarcerated?",
+    "QuestionFive": "Are you seeking assistance in obtaining food and/or meals?",
+    "QuestionSix": "Are healthier foods a higher concern for you?",
+    "QuestionSeven": "Do you wish to obtain non-perishables?",
+    "QuestionEight": "Are you seeking food assistance all day instead of around specific times?",
+    "QuestionNine": "Are you experiencing domestic violence?",
+    "QuestionTen": "Are you seeking any form of legal assistance?",
+    "QuestionEleven": "Do you desire counseling?",
+    "QuestionTwelve": "Do you seek assistance in managing substance abuse?",
+    "QuestionThirteen": "Do you seek assistance with personal medical issues?",
+    "QuestionFourteen": "Do you require dental services?",
+    "QuestionFifteen": "Are you seeking places that offer hygiene services?",
+    "QuestionSixteen": "Are you seeking places that offer clothing assistance?"
 }

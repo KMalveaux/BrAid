@@ -1,0 +1,13 @@
+#individualComponent {
+  margin: 0.5%;
+  padding: 0.5%;
+  width: 30%;
+  font-size: 1.5rem;
+  color: whitesmoke;
+  border: 3px solid black;
+  border-radius: 2%;
+}
+
+#individualComponent p {
+  padding-left: 5%;
+}

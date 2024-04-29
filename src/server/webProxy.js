@@ -13,6 +13,8 @@ app.use(express.json());
 
 const createNewAccount = require("./createNewAccount");
 const loginUser = require("./loginUser");
+const saveSurveyResults = require("./saveSurveyResults");
+const getSurveyResults = require("./getSurveyResults");
 
 const sequelize = new Sequelize({
   dialect: "sqlite",
@@ -28,6 +30,92 @@ const UserModel = sequelize.define(
     hash: {
       type: DataTypes.STRING,
       allowNull: false,
+    },
+  },
+  {}
+);
+const SurveyModel = sequelize.define(
+  "SurveyResults",
+  {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    answer1: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer2: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer3: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer4: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer5: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer6: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer7: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer8: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer9: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer10: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer11: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer12: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer13: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer14: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer15: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer16: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer17: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer18: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer19: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
     },
   },
   {}
@@ -75,6 +163,39 @@ app.post("/login", async (req, res) => {
     res
       .status(200)
       .json({ message: "Successfully Signed In!", token, userData });
+  }
+});
+
+app.post("/saveSurveyResults", async (req, res) => {
+  const { surveyAnswersArray, username } = req.body;
+  const result = await saveSurveyResults(
+    SurveyModel,
+    username,
+    surveyAnswersArray
+  );
+  if (result === 1) {
+    res.status(200).json({ message: "Successfully saved survey result!" });
+  } else {
+    res.status(500).json({ message: "Error saving results" });
+  }
+});
+
+app.post("/getSurveyResults", async (req, res) => {
+  const { AccName } = req.body;
+  try {
+    const surveyResults = await getSurveyResults(SurveyModel, AccName);
+    console.log("SURVEY RESULTS: " + surveyResults);
+    if (surveyResults) {
+      res.status(200).json(surveyResults);
+      console.log("Sending surveyResults to client");
+    } else {
+      res.status(404).json({
+        message: "Survey results not found for the specified username",
+      });
+    }
+  } catch (error) {
+    console.error("Error getting survey results:", error);
+    res.status(500).json({ message: "Error getting survey results" });
   }
 });
 

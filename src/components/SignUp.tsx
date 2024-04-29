@@ -2,14 +2,15 @@
 import React, { useState } from "react";
 
 // Local Imports
-import styles from "../css/Survey.module.css";
+import styles from "../css/SignInUp.module.css";
 import hashString from "../functions/hasher";
 
 interface showSurvey {
   onClose: () => void;
+  surveyAnswers: boolean[] | null;
 }
 
-const SignUp = ({ onClose }: showSurvey) => {
+const SignUp = ({ onClose, surveyAnswers }: showSurvey) => {
   const [username1, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
@@ -37,6 +38,31 @@ const SignUp = ({ onClose }: showSurvey) => {
         console.log("reponse status " + response.status);
 
         setIsSuccess(true);
+
+        if (surveyAnswers) {
+          try {
+            const surveyResponse = await fetch(
+              "http://localhost:8080/saveSurveyResults",
+              {
+                method: "POST",
+                headers: {
+                  "content-type": "application/json",
+                },
+                body: JSON.stringify({
+                  username: username1,
+                  surveyAnswersArray: surveyAnswers,
+                }),
+              }
+            );
+            if (surveyResponse.status === 200) {
+              console.log("Survey results saved successfully");
+            } else {
+              console.error("Failed to save survey results");
+            }
+          } catch (error) {
+            console.error("Error saving survey results:", error);
+          }
+        }
       } else if (response.status === 401) {
         setIsSuccess(false);
 

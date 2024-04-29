@@ -33,6 +33,93 @@ const UserModel = sequelize.define(
   {}
 );
 
+const SurveyModel = sequelize.define(
+  "SurveyResults",
+  {
+    username: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    answer1: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer2: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer3: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer4: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer5: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer6: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer7: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer8: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer9: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer10: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer11: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer12: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer13: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer14: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer15: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer16: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer17: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer18: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+    answer19: {
+      type: DataTypes.BOOLEAN,
+      defaultValue: false,
+    },
+  },
+  {}
+);
+
 sequelize
   .sync()
   .then(async () => {
@@ -43,6 +130,17 @@ sequelize
   .catch((err) => {
     console.error("Error syncing database:", err);
   });
+
+const createSurveyResultsTable = async () => {
+  try {
+    await sequelize.sync({ force: true });
+    console.log("SurveyResults table created successfully.");
+  } catch (error) {
+    console.error("Error creating SurveyResults table:", error);
+  }
+};
+
+createSurveyResultsTable();
 
 // ============== Listed Below are some useful methods to know ==============
 

@@ -11,11 +11,19 @@ import styles from "../css/AlternateBanner.module.css";
 
 import logo from "../images/BRAidAltLogo.svg";
 
+interface props {
+  setUsernameInLandingPage: (usrname: string) => void;
+  onSurveyResultsFetch: (answersArr: boolean[]) => void;
+}
+
 /**
  * Represents the banner displayed at the topmost section of the website
  * @returns JSX.Element
  */
-const AlternateBanner: React.FC = () => {
+const AlternateBanner: React.FC<props> = ({
+  setUsernameInLandingPage,
+  onSurveyResultsFetch,
+}: props) => {
   const [showSignIn, setShowSignIn] = useState<boolean>(false);
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
 
@@ -23,7 +31,11 @@ const AlternateBanner: React.FC = () => {
 
   const handleSignedIn = (signedInUsername: string) => {
     setUsername(signedInUsername);
-    console.log("YOOOOOOOOO");
+    setUsernameInLandingPage(signedInUsername);
+  };
+
+  const handleFetch = (answersArr: boolean[]) => {
+    onSurveyResultsFetch(answersArr);
   };
 
   return (
@@ -32,11 +44,16 @@ const AlternateBanner: React.FC = () => {
         <SignIn
           onClose={() => setShowSignIn(false)}
           onSignIn={handleSignedIn}
+          onSurveyResultsFetch={handleFetch}
         />
       ) : (
         <></>
       )}
-      {showSignUp ? <SignUp onClose={() => setShowSignUp(false)} /> : <></>}
+      {showSignUp ? (
+        <SignUp onClose={() => setShowSignUp(false)} surveyAnswers={null} />
+      ) : (
+        <></>
+      )}
 
       <img id={styles.logo} src={logo} alt="logo goes here" />
       <div id={styles.linksContainer}>
