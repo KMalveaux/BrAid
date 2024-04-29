@@ -55,7 +55,6 @@ const LandingPage = () => {
           <InteractiveMap />
         </div>
         <div className={styles.selectablePlacesContainer}>
-          <p>hello</p>
         </div>
       </div>
     </div>

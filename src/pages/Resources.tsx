@@ -1,4 +1,4 @@
-// Third Party Imports
+/*// Third Party Imports
 
 // Local Imports
 import styles from "../css/Resources.module.css";
@@ -8,7 +8,7 @@ import AlternateBanner from "../components/AlternateBanner";
 /**
  * This represents the resources page of the website.
  * @returns React Component
- */
+ 
 const Resources = () => {
   return (
     <div className={styles.outerBox}>
@@ -141,4 +141,4 @@ const Resources = () => {
   // This is a comment outside of the return
 };
 
-export default Resources;
+export default Resources; */

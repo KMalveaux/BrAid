@@ -66,14 +66,16 @@ a{
 #signInButton {
   /*background: none;
   border: 0px;
-  cursor: pointer;
   margin-top: 5%;*/
+  cursor: pointer;
   padding: 10 px;
-  font-size: 20%;
-  background-color: --navy;
+  font-size: 1rem;
+  color: white;
+  background-color: rgba(12, 8, 89);
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
   margin: 2%;
   width: 60%;
+  padding:3%;
   border-radius: 6px;
   box-sizing: border-box;
   display: flex;
@@ -83,22 +85,26 @@ a{
 }
 
 #signInButton:hover{
-
+  background-color: #422CE8;
 }
 
 #logInButton {
-  background: none;
-  border: 1px;
-  border-color:#422CE8;
-  margin-top: 5%;
-  background-color: white;
-  border-radius: 6px;
-  padding: 3%;
-  width: 55%;
-  margin-left: 50%;
-  color: #422CE8;
+  cursor: pointer;
+    background: none;
+    /* border: 2px; */
+    border-color: #422CE8;
+    border-width: 3px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+    margin-top: 5%;
+    background-color: white;
+    border-radius: 6px;
+    padding: 3%;
+    width: 60%;
+    margin-left: 50%;
+    font-size: 1rem;
+    color: #422CE8;
 }
 
-#logInButton:hover {
-
+.logInButton:hover {
+  background-color: #cec8fe;
 }

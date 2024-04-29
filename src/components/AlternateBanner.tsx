@@ -37,13 +37,13 @@ const AlternateBanner: React.FC = () => {
           alt="Profile Icon Here"
         />
         <button
-          id={styles.signInButton}
+          id={styles.logInButton}
           onClick={() => setShowSignIn(toggleState(showSignIn))}
         >
           Log In
         </button>
         <button
-          id={styles.logInButton}
+          id={styles.signInButton}
           onClick={() => setShowSignUp(toggleState(showSignUp))}
         >
           Sign Up

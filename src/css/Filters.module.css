@@ -4,14 +4,35 @@
 
 #filterDropDown {
   width: 100%;
-  background: transparent;
-  border: 1px solid black;
+  background: white;
+  border: 1px solid  rgba(12, 8, 89);
+  font-family: english-grotesque, sans-serif;
   font-size: 30px;
+  font-weight: 300;
   padding: 10px;
   display: flex;
   justify-content: flex-start;
+  color:  rgba(12, 8, 89);
 }
 
-#listItem {
-  font-size: 100px;
+
+ul{
+  width: 100%;
+  background: white;
+  border: 1px solid rgba(12, 8, 89);
+  color: rgba(12, 8, 89);
+  text-decoration: none;
+}
+
+li{
+  font-size: 20px;
+  font-family: english-grotesque, sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  color: rgba(12, 8, 89);
+  text-decoration: none;
+}
+
+::marker{
+  display: none;
 }
