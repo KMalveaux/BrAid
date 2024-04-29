@@ -42,25 +42,40 @@ app.get("/", (req, res) => {
  *  The database shall enforce unique usernames, therefore there will
  *  be a check to see if a given username already exists.
  */
-app.post("/createUser", (req, res) => {
-  createNewAccount(UserModel, req.body.username, req.body.passwordHash);
-  console.log("hello");
+app.post("/createUser", async (req, res) => {
+  try {
+    const result = await createNewAccount(
+      UserModel,
+      req.body.username,
+      req.body.passwordHash
+    );
+    if (result === 1) {
+      res.status(200).json({ message: "Your profile has been created!" });
+    } else if (result === 2) {
+      res.status(401).json({ message: "Username already in use!" });
+    }
+  } catch (error) {
+    console.error("Error creating user:", error);
+    res.status(500).send();
+  }
 });
 
 /**
  * Endpoint for user login
  */
-app.post("/login", (req, res) => {
+app.post("/login", async (req, res) => {
   const { username, password } = req.body;
-  const userData = loginUser(UserModel, username, password);
+  const userData = await loginUser(UserModel, username, password);
 
-  if (!userData || Object.keys(userData).length === 0) {
+  if (!userData || Object.keys(userData).length == 0) {
     return res.status(401).json({ message: "Invalid username or password" });
+  } else {
+    const token = jwt.sign(userData, secretKey, { expiresIn: "1h" });
+
+    res
+      .status(200)
+      .json({ message: "Successfully Signed In!", token, userData });
   }
-
-  const token = jwt.sign(userData, secretKey, { expiresIn: "1h" });
-
-  res.json({ token });
 });
 
 app.listen(port, () => {

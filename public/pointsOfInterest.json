@@ -13,5 +13,60 @@
         "dentalServices": true,
         "latitude": "30.437354449294197",
         "longitude": "-91.0569979248055"
+    },
+    "Catholic Charities Baton Rouge Joseph Homes": {
+        "housingMale": true,
+        "counseling": true,
+        "substanceAbuse": true,
+        "formerlyIncarcerated": true,
+        "jobAssistance": true
+    },
+    "Bishop Ott Shelter for Men (St. Vincent de Paul)": {
+        "housingMale": true,
+        "jobAssistance": true,
+        "educationResource": true,
+        "foodAssistance": true,
+        "substanceAbuse": true
+    },
+    "The Salvation Army - Next Step": {
+        "housingMale": true,
+        "rehabilitation": true,
+        "jobAssistance": true
+    },
+    "Living Waters Outreach Ministry": {
+        "housingMale": true,
+        "hygiene": true,
+        "foodAssistance": true,
+        "needID": true,
+        "needCash": "$10",
+        "needBrathalyzer": true
+    },
+    "Iris Domestic Violence Center": {
+        "domesticViolenceMale": true,
+        "domesticViolenceFemale": true,
+        "domesticViolenceYouth": true,
+        "Address": "762 Curlew St. Baton Rouge, LA 70807",
+        "latitude": "30.53353566884998",
+        "longitude": "-91.18756825222385"
+    },
+    "STAR: Sexual Trauma Awareness and Response": {
+        "domesticViolenceMale": true,
+        "domesticViolenceFemale": true,
+        "domesticViolenceYouth": true,
+        "counseling": true,
+        "legalServices": true,
+        "Address": "Capital Area Branch 5615 Corporate Blvd, Ste 200 Baton Rouge, LA 70808",
+        "latitude": "30.425399461789613",
+        "longitude": "-91.1327782058705"
+    },
+    "Capital Area Family Justice Center": {
+        "domesticViolenceMale": true,
+        "domesticViolenceFemale": true,
+        "domesticViolenceYouth": true,
+        "domesticViolenceFamily": true,
+        "Address": "1120 Government St, Baton_Rouge, LA 70802",
+        "latitude": "30.443229287955013",
+        "longitude": "-91.1762882752904"
     }
+
 }

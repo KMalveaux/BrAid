@@ -1,5 +1,6 @@
 {
     "QuestionOne": "Are you experiencing homelessness?",
     "QuestionTwo": "Do you have personal motorized transportation?",
-    "QuestionThree": "Are there certain foods which may be harmful to your health?"
+    "QuestionThree": "Are there certain foods which may be harmful to your health?",
+    "End": "This serves to mark the end of the survey"
 }

@@ -14,10 +14,12 @@ async function createNewAccount(Model, AccName, passwordHash) {
     const newUser = Model.build({ username: AccName, hash: passwordHash });
     await newUser.save();
     console.log(newUser.username + " was saved to the database!");
+    return 1; // "Your profile has been created!";
   } else {
     console.log(
       "A user with the provided username already exists! Aborting: new user not created."
     );
+    return 2; // "A profile with this username already exists!";
   }
 }
 

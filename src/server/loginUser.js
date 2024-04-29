@@ -11,7 +11,6 @@ const { Sequelize, Model, DataTypes } = require("sequelize");
 async function loginUser(Model, AccName, passwordHash) {
   const storedUser = await Model.findOne({ where: { username: AccName } });
 
-  console.log(AccName, passwordHash);
   if (storedUser == null) {
     console.log("Username incorrect!");
     return {};
@@ -20,7 +19,6 @@ async function loginUser(Model, AccName, passwordHash) {
       passwordHash,
       storedUser.hash
     );
-    console.log(passwordHash, storedUser.hash);
 
     if (passwordMatch) {
       console.log(AccName + " logged in successfully!");

@@ -18,9 +18,22 @@ const Banner = () => {
   const [showSignIn, setShowSignIn] = useState<boolean>(false);
   const [showSignUp, setShowSignUp] = useState<boolean>(false);
 
+  const [userName, setUsername] = useState<string | null>(null);
+
+  const handleSignedIn = (signedInUsername: string) => {
+    setUsername(signedInUsername);
+  };
+
   return (
     <div className={styles.bannerBase}>
-      {showSignIn ? <SignIn onClose={() => setShowSignIn(false)} /> : <></>}
+      {showSignIn ? (
+        <SignIn
+          onClose={() => setShowSignIn(false)}
+          onSignIn={handleSignedIn}
+        />
+      ) : (
+        <></>
+      )}
       {showSignUp ? <SignUp onClose={() => setShowSignUp(false)} /> : <></>}
       <img
         src={require("../images/BRAidLogo.png")}

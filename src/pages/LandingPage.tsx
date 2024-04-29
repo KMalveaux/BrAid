@@ -122,18 +122,32 @@ const LandingPage = () => {
           <div className={styles.localResources}>
             <div id={styles.filtersContainer}>
               <Filters
-                title="Health"
-                filters={["Mens", "Womens", "Youth"]}
+                title="Shelter"
+                filters={[
+                  "housingMale",
+                  "housingFemale",
+                  "housingGenderInclusive",
+                  "formerlyIncarcerated",
+                  "jobAssistance",
+                  "rehabilitation",
+                ]}
                 onCheckboxChange={handleCheckboxChange}
               />
               <Filters
                 title="Food"
-                filters={["Breakfast", "Lunch", "Dinner"]}
+                filters={["foodAssistance"]}
                 onCheckboxChange={handleCheckboxChange}
               />
               <Filters
                 title="Safety"
-                filters={["Police", "Fire", "Medical"]}
+                filters={[
+                  "domesticViolenceMale",
+                  "domesticViolenceFemale",
+                  "domesticViolenceYouth",
+                  "domesticViolenceFamily",
+                  "counseling",
+                  "legalServices",
+                ]}
                 onCheckboxChange={handleCheckboxChange}
               />
               <Filters

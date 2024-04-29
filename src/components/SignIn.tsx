@@ -7,15 +7,19 @@ import Survey from "./Survey";
 
 interface showSurvey {
   onClose: () => void;
+  onSignIn: (username: string) => void;
 }
 
 /**
  * Represents the sign up screen
  * @returns React Component
  */
-const SignIn = ({ onClose }: showSurvey) => {
+const SignIn = ({ onClose, onSignIn }: showSurvey) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Disables user scrolling while this component is mounted
   useEffect(() => {
@@ -43,8 +47,15 @@ const SignIn = ({ onClose }: showSurvey) => {
         }),
       });
 
-      if (!response.ok) {
-        console.log(JSON.stringify(response, null, 1));
+      if (response.status === 200) {
+        setIsSuccess(true);
+        const responseData = await response.json();
+        const { username } = responseData.userData; // Access username field from response data
+        onSignIn(username);
+      } else if (response.status === 401) {
+        setIsSuccess(false);
+        const responseData = await response.json();
+        setErrorMessage(responseData.message);
       }
     } catch (error) {
       console.error("error", error);
@@ -79,7 +90,8 @@ const SignIn = ({ onClose }: showSurvey) => {
             </label>
             <input type="submit" value="Login"></input>
           </form>
-
+          {isSuccess === true && <p>Successfully Signed In!</p>}
+          {isSuccess === false && <p>{errorMessage}</p>}
           <p>Don't have an account?</p>
           <button>click me!</button>
         </div>

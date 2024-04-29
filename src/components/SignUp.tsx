@@ -12,6 +12,8 @@ interface showSurvey {
 const SignUp = ({ onClose }: showSurvey) => {
   const [username1, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [isSuccess, setIsSuccess] = useState<boolean | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -31,11 +33,20 @@ const SignUp = ({ onClose }: showSurvey) => {
         body: JSON.stringify(newUserData),
       });
 
-      if (!response.ok) {
-        console.log(JSON.stringify(response, null, 1));
+      if (response.status === 200) {
+        console.log("reponse status " + response.status);
+
+        setIsSuccess(true);
+      } else if (response.status === 401) {
+        setIsSuccess(false);
+
+        const responseData = await response.json();
+        setErrorMessage(responseData.message);
       }
     } catch (error) {
       console.error("error", error);
+      setIsSuccess(false);
+      setErrorMessage("An error occurred while creating the account.");
     }
   };
 
@@ -69,7 +80,8 @@ const SignUp = ({ onClose }: showSurvey) => {
             </label>
             <input type="submit" value="Login"></input>
           </form>
-
+          {isSuccess === true && <p>Account created successfully!</p>}
+          {isSuccess === false && <p>Error: {errorMessage}</p>}
           <p>Already have an account?</p>
           <button>click me!</button>
         </div>

@@ -68,3 +68,10 @@
   padding: 3%;
   width: 55%;
 }
+
+.signedInUsernameConatiner {
+  font-size: large;
+  color: white;
+  text-align: center;
+  padding-top: 10%;
+}
