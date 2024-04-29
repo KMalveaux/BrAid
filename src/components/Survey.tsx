@@ -47,7 +47,6 @@ const Survey = ({ onClose, signedIn, onSurveyFinish }: showSurvey) => {
   const handleGoToAccountCreation = () => {
     onSurveyFinish(answerArray.current);
     setShowSignUp(true);
-    answerArray.current = [];
   };
 
   const handleDoNotCreateAccount = () => {
