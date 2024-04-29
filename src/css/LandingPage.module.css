@@ -3,15 +3,38 @@
 .pageBase {
   background-color: #BE1E2D;
   height: 100%;
-  background-image: url("../images/BTRAID_BG-100.jpg");
+  background-image: url("../images/braidBgtrial-8.png");
   background-attachment: fixed;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
+p{
+  max-width: 32ch;
+  text-align: center;
+  color: white;
+  font-weight: 100;
+}
+
+h1{
+  font-weight: 300;
+  font-style: normal;
+  font-size: 148%;
+  margin-bottom: -2%;
+  color:white;
+}
+
 .pageContent {
   /*padding-top: var(--bannerHeight);*/
+}
+
+#homeDecor{
+  width: 101%;
+  overflow: hidden;
+  margin-left: -1%;
+  position: absolute;
+  margin-top: 1%;
 }
 
 .imageContainer {
@@ -27,8 +50,8 @@
 #introductionPlate {
   display: flex;
   position: relative;
-  left: 20%;
-  top: 30%;
+  left: 53%;
+  top: 16%;
   flex-direction: column;
   align-items: center;
 }
@@ -98,4 +121,11 @@
 
 #filtersContainer {
   width: 20%;
+}
+
+#filterIcon {
+  width: 34px;
+  position: absolute;
+  margin-left: 12%;
+  margin-top: 1%;
 }

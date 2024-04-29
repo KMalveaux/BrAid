@@ -7,8 +7,8 @@ import styles from "../css/InteractiveMap.module.css";
 
 const InteractiveMap = () => {
   const containerStyle = {
-    width: "400px",
-    height: "400px",
+    width: "700px",
+    height: "450px",
   };
 
   const center = {

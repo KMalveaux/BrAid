@@ -23,10 +23,11 @@ const LandingPage = () => {
       {showSurvey ? <Survey onClose={() => setShowSurvey(false)} /> : <></>}
 
       <div className={styles.pageContent}>
+        <img id={styles.homeDecor} src ={require("../images/homeDecor-8.png")} alt =""/>
         <div className={styles.imageContainer}>
           <div id={styles.introductionPlate}>
             <h1>Welcome</h1>
-            <p> A community dedicated to helping the houseless of Baton Rouge </p>
+            <p>Are you experiencing houselessness in Baton Rouge? Help is only a click away - let us locate resources tailored for YOU!</p>
             <p
               id={styles.primaryButton}
               onClick={() => setShowSurvey(toggleState(showSurvey))}
@@ -40,13 +41,14 @@ const LandingPage = () => {
 
         <div className={styles.localResources}>
           <div id={styles.filtersContainer}>
+            <div>
+              <h3><Filters title="Filters" filters={[]} /></h3>
+              <img id={styles.filterIcon} src={require("../images/Asset 5-8.png")} alt=""/>
+            </div>
             <Filters title="Health" filters={["Mens", "Womens", "Youth"]} />
             <Filters title="Food" filters={["Breakfast", "Lunch", "Dinner"]} />
             <Filters title="Safety" filters={["Police", "Fire", "Medical"]} />
-            <Filters
-              title="Medical"
-              filters={["Substance Abuse", "Fire", "Medical"]}
-            />
+            <Filters title="Medical" filters={["Substance Abuse", "Fire", "Medical"]}/>
           </div>
 
           {/**<iframe width="500" height="300" src={`https://api.maptiler.com/maps/streets-v2/?key=luH2YK5xc1LO68H8dnde#0.6/-12.90907/-22.54736`}></iframe>*/}
